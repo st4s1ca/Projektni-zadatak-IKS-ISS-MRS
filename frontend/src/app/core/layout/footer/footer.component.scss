@@ -1,0 +1,31 @@
+:host { display: block; }
+
+.cake-footer {
+  position: relative;
+  min-height: 240px;
+  padding: 145px 7% 36px;
+  box-sizing: border-box;
+  overflow: visible;
+  color: #fff5df;
+  background:
+    radial-gradient(circle at 19% 28%, rgba(234, 178, 110, .26) 0 2px, transparent 3px) 0 0 / 43px 38px,
+    radial-gradient(circle at 69% 60%, rgba(50, 26, 17, .27) 0 3px, transparent 4px) 0 0 / 61px 45px,
+    linear-gradient(105deg, #875136, #ac7047 42%, #79503a 100%);
+}
+.cake-footer__content { position: relative; z-index: 1; }
+
+// Poslednji sloj: ista tekstura nastavlja se sve do talasaste ivice.
+.cake-footer { z-index: 6; --wave-height: clamp(74px, 9.5vw, 125px); }
+.cake-footer::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(-1 * var(--wave-height) + 1px);
+  height: calc(var(--wave-height) + 26px);
+  background: inherit;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2057%20C113%2025%20159%20104%20294%2053%20C397%2014%20484%2095%20583%2057%20C693%2016%20766%2095%20878%2050%20C995%2010%201087%2095%201202%2055%20C1330%2019%201378%2082%201440%2058%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2057%20C113%2025%20159%20104%20294%2053%20C397%2014%20484%2095%20583%2057%20C693%2016%20766%2095%20878%2050%20C995%2010%201087%2095%201202%2055%20C1330%2019%201378%2082%201440%2058%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  pointer-events: none;
+}

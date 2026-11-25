@@ -1,0 +1,14 @@
+<article class="recipe-card">
+  <img class="recipe-card__image" [src]="recipe.imageUrl" [alt]="recipe.name">
+
+  <div class="recipe-card__content">
+    <h3>{{ recipe.name }}</h3>
+
+    <div class="recipe-card__details">
+      <span class="recipe-card__time">{{ recipe.preparationTime }} min</span>
+      <span class="recipe-card__rating" [attr.aria-label]="'Rating: ' + recipe.rating + ' out of 5'">
+        <span aria-hidden="true">★</span> {{ recipe.rating }}
+      </span>
+    </div>
+  </div>
+</article>

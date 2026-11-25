@@ -1,0 +1,77 @@
+<main class="cake-home">
+  <section class="cake-layer layer-vanilla" aria-label="Vanila krem">
+    <div class="search-container">
+    <h1>What are we cooking today?</h1>
+
+    <form
+        class="search-box"
+        (submit)="onSearch($event, searchInput.value)"
+        role="search"
+    >
+        <svg
+        class="search-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+        >
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m16 16 5 5"/>
+        </svg>
+
+        <input
+        #searchInput
+        type="search"
+        placeholder="Search for recipes..."
+        aria-label="Search for recipes"
+        />
+
+        <button type="submit">Search</button>
+    </form>
+    </div>
+
+    <span class="decor vanilla-bean vanilla-bean--one" aria-hidden="true"></span>
+    <span class="decor vanilla-bean vanilla-bean--two" aria-hidden="true"></span>
+    <span class="decor star-crumb star-crumb--one" aria-hidden="true"></span>
+    <span class="decor cream-swoosh" aria-hidden="true"></span>
+    
+    
+  </section>
+
+  <section class="cake-layer layer-sponge layer-sponge--first" aria-label="Biskvit">
+    <span class="decor crumb crumb--one" aria-hidden="true"></span>
+    <span class="decor crumb crumb--two" aria-hidden="true"></span>
+    <span class="decor crumb crumb--three" aria-hidden="true"></span>
+    <span class="decor berry berry--one" aria-hidden="true"></span>
+    <span class="decor berry berry--two" aria-hidden="true"></span>
+
+    <div class="recipe-grid">
+  @for (recipe of filteredRecipes; track recipe.id) {
+    <app-recipe-card [recipe]="recipe"></app-recipe-card>
+  } @empty {
+    <p>No recipes found.</p>
+  }
+</div>
+
+  </section>
+
+  <section class="cake-layer layer-frosting" aria-label="Kremasti fil">
+    <span class="decor icing-swirl icing-swirl--left" aria-hidden="true"></span>
+    <span class="decor icing-swirl icing-swirl--right" aria-hidden="true"></span>
+    <span class="decor star-crumb star-crumb--two" aria-hidden="true"></span>
+    <!-- Ovde moze sledeca sekcija sa sadrzajem. -->
+  </section>
+
+  <section class="cake-layer layer-matcha" aria-label="Pistacio fil">
+    <span class="decor leaf leaf--one" aria-hidden="true"></span>
+    <span class="decor leaf leaf--two" aria-hidden="true"></span>
+    <span class="decor pistachio pistachio--one" aria-hidden="true"></span>
+    <span class="decor pistachio pistachio--two" aria-hidden="true"></span>
+  </section>
+
+  <section class="cake-layer layer-sponge layer-sponge--last" aria-label="Donja kora">
+    <span class="decor crumb crumb--four" aria-hidden="true"></span>
+    <span class="decor crumb crumb--five" aria-hidden="true"></span>
+  </section>
+</main>
