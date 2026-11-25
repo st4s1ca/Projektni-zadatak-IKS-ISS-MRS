@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/* paleta boja:
+- modro crvena 300213
+- tamnozelena (Header): #345C49
+- vanila krem (prvi sloj): #FFF4DF
+- svetla vanila (osvetljeni delovi): #FFF8E9
+- zlatni biskvit (prva kora): #D8A368
+- svetliji biskvit: #E7BD81
+- tamniji biskvit: #B9783E
+- kremasti fil (osnovna boja): #FBE9CE
+- svetli fil: #FFF2DB
+- karamel nijansa fila: #F5D8B7
+- pistac zelena (zeleni fil): #AFBD8E
+- svetlo pistac: #C5D1A6
+- tamna pistac: #A2B784
+- donja kora biskvita: #BE854D
+- cokoladnobraon (Footer): #875136
+- svetlobraon (Footer): #AC7047
+- tamnobraon (Footer): #79503A
+- crvena (bobice): #BE393C
+- tamnocrvena (senke bobica): #722B2C
+- braon (mrvice): #AC703B
+- zlatnobež (sitne dekoracije): #DDB37B
+- svetlokrem (tekst na tamnoj pozadini): #FFF5DF
+*/
+
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}

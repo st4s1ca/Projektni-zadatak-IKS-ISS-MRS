@@ -1,0 +1,87 @@
+:host {
+  display: block;
+  min-width: 0;
+  margin: 10px;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  padding: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+
+  // Tamni losos (darksalmon) kao prethodni veliki div,
+  // ali poluprovidan samo u pozadini, ne i na slici/tekstu.
+  background: linear-gradient(
+    145deg,
+    rgba(249, 192, 169, 0.90) 0%,
+    rgba(233, 150, 122, 0.86) 55%,
+    rgba(218, 127, 105, 0.83) 100%
+  );
+  border: 1px solid rgba(255, 249, 238, 0.75);
+  box-shadow:
+    0 14px 28px rgba(83, 48, 30, 0.20),
+    0 3px 8px rgba(83, 48, 30, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50);
+  backdrop-filter: blur(9px) saturate(110%);
+  -webkit-backdrop-filter: blur(9px) saturate(110%);
+  color: #3c3028;
+
+  transition: transform 180ms ease, box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0 20px 34px rgba(83, 48, 30, 0.23),
+      0 6px 12px rgba(83, 48, 30, 0.13);
+  }
+}
+
+.recipe-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 13px;
+  background: #fbe9ce;
+}
+
+.recipe-card__content {
+  padding: 13px 10px 9px;
+}
+
+.recipe-card h3 {
+  margin: 0 0 12px;
+  font-size: clamp(19px, 1.5vw, 23px);
+  line-height: 1.2;
+  color: #3d3027;
+}
+
+.recipe-card__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #553b30;
+}
+
+.recipe-card__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 250, 239, 0.52);
+  color: #345c49;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-card { transition: none; }
+  .recipe-card:hover { transform: none; }
+}

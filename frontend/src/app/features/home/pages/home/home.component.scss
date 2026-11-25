@@ -1,0 +1,389 @@
+:host {
+  display: block;
+}
+
+.cake-home {
+  --vanilla: #fff4df;
+  --sponge: #d8a368;
+  --frosting: #fbe9ce;
+  --matcha: #afbd8e;
+  --sponge-bottom: #be854d;
+  width: 100%;
+  overflow: visible;
+}
+
+.cake-layer {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  min-height: 300px;
+  padding: 150px clamp(24px, 7vw, 110px) 90px;
+  overflow: visible;
+}
+
+.layer-vanilla {
+  // Search je pomeren navise bez povecavanja ukupne visine vanila sloja.
+  // Manji gornji + veci donji padding: talas ostaje na istom mestu.
+  min-height: 0;
+  padding: clamp(32px, 3.5vw, 60px) clamp(24px, 7vw, 110px) 104px;
+  background:
+    radial-gradient(ellipse at 18% 34%, rgba(255, 255, 255, .82) 0 13%, transparent 44%),
+    radial-gradient(ellipse at 91% 82%, rgba(239, 202, 149, .30) 0 8%, transparent 43%),
+    repeating-radial-gradient(circle at 17% 52%, rgba(194, 153, 101, .085) 0 1px, transparent 2px 21px),
+    linear-gradient(110deg, #fff8e9, #fff0d4 54%, #f7e4c4);
+}
+
+// Mikrotekstura 'rupica' u biskvitu kreirana CSS radial-gradient-ima.
+.layer-sponge {
+  background-color: var(--sponge);
+  background-image:
+    radial-gradient(ellipse at 20% 28%, rgba(255, 236, 190, .72) 0 2px, transparent 3.4px),
+    radial-gradient(ellipse at 72% 60%, rgba(113, 66, 32, .23) 0 3px, transparent 5px),
+    radial-gradient(ellipse at 34% 75%, rgba(255, 239, 207, .68) 0 4px, transparent 5.4px),
+    radial-gradient(ellipse at 60% 12%, rgba(116, 71, 39, .27) 0 1.5px, transparent 3px),
+    radial-gradient(ellipse at 13% 33%, rgba(255, 232, 181, .30) 0 27%, transparent 58%),
+    linear-gradient(103deg, #b9783e 0%, #e0b174 22%, #e7bd81 49%, #d49b5d 78%, #be7b43 100%);
+  background-size: 37px 31px, 61px 53px, 83px 66px, 29px 41px, auto, auto;
+  box-shadow: inset 0 16px 28px rgba(106, 58, 30, .08), inset 0 -14px 35px rgba(117, 61, 30, .13);
+}
+
+.layer-sponge--first {
+  min-height: 510px;
+  padding-top: 115px;
+  padding-bottom: 88px;
+}
+.layer-sponge--last {
+  min-height: 390px;
+  background-color: var(--sponge-bottom);
+  filter: saturate(.94);
+}
+
+.layer-frosting {
+  min-height: 330px;
+  background:
+    radial-gradient(ellipse at 15% 53%, rgba(255, 255, 255, .85) 0 12%, transparent 40%),
+    radial-gradient(ellipse at 76% 40%, rgba(255, 254, 240, .55) 0 9%, transparent 36%),
+    repeating-linear-gradient(175deg, rgba(207, 158, 109, .045) 0 2px, transparent 2px 24px),
+    linear-gradient(98deg, #f9deb8, #fff2db 42%, #f5d8b7);
+  box-shadow: inset 0 17px 28px rgba(119, 80, 41, .08);
+}
+
+.layer-matcha {
+  min-height: 400px;
+  background:
+    radial-gradient(ellipse at 25% 35%, rgba(242, 248, 209, .66), transparent 55%),
+    radial-gradient(ellipse at 84% 75%, rgba(103, 137, 79, .25), transparent 52%),
+    repeating-radial-gradient(circle at 30% 70%, rgba(59, 101, 59, .05) 0 1.5px, transparent 3px 24px),
+    linear-gradient(110deg, #a9bd88, #c5d1a6 48%, #a2b784);
+  box-shadow: inset 0 14px 23px rgba(63, 80, 48, .08);
+}
+
+// Dekoracije su samo CSS elementi, bez slika. Sve su neinteraktivne.
+.decor { position: absolute; pointer-events: none; z-index: 5; }
+
+.crumb {
+  width: 18px; height: 11px;
+  border-radius: 41% 54% 47% 37%;
+  transform: rotate(-18deg);
+  background: #ac703b;
+  box-shadow: 14px 22px 0 -4px #ecca91,
+              34px -12px 0 -6px #8a582f,
+              67px 7px 0 -5px #f0cd95,
+              -18px 19px 0 -5px #7f4b27;
+}
+.crumb--one { left: 9%; top: 30%; transform: rotate(23deg) scale(1.1); }
+.crumb--two { right: 13%; top: 47%; transform: rotate(83deg) scale(.9); }
+.crumb--three { left: 49%; bottom: 18%; transform: rotate(149deg); }
+.crumb--four { left: 15%; top: 57%; transform: rotate(47deg); }
+.crumb--five { right: 23%; bottom: 21%; transform: rotate(-34deg); }
+
+.berry {
+  width: 61px; height: 60px; border-radius: 53% 47% 50% 48%;
+  background: radial-gradient(circle at 29% 27%, #ffb7a8 0 6%, #e76e60 16%, #be393c 55%, #722b2c 100%);
+  box-shadow: inset -9px -7px 12px rgba(91, 28, 27, .26), 0 12px 18px rgba(92, 41, 28, .17);
+}
+.berry::before {
+  content: ''; position: absolute; width: 20px; height: 8px;
+  background: #56804b; border-radius: 100% 10% 100% 0;
+  left: 29px; top: -5px; transform: rotate(-30deg);
+}
+.berry::after {
+  content: ''; position: absolute; width: 28px; height: 12px;
+  left: 12px; top: 19px; opacity: .35;
+  background: radial-gradient(circle, #fff5e0 0 1px, transparent 1.5px);
+  background-size: 7px 6px;
+}
+.berry--one { right: 9%; top: 24%; transform: rotate(11deg); }
+.berry--two { right: 14%; top: 30%; transform: scale(.70) rotate(-17deg); }
+
+.vanilla-bean {
+  width: 54px; height: 6px; background: #9e774f; border-radius: 100%;
+  opacity: .55; box-shadow: 4px 12px 0 -2px #9e774f;
+}
+.vanilla-bean--one { left: 14%; top: 39%; transform: rotate(-29deg); }
+.vanilla-bean--two { right: 15%; bottom: 20%; transform: rotate(31deg) scale(.67); }
+
+.star-crumb {
+  width: 13px; height: 13px; background: #ddb37b;
+  clip-path: polygon(50% 0, 59% 38%, 100% 50%, 59% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  opacity: .75;
+}
+.star-crumb--one { top: 29%; right: 31%; }
+.star-crumb--two { bottom: 22%; left: 25%; }
+
+.cream-swoosh {
+  width: 230px; height: 86px; right: 6%; bottom: 13%;
+  border: 8px solid rgba(255,255,255,.4); border-left-color: transparent; border-bottom-color: transparent;
+  border-radius: 50%; transform: rotate(-17deg);
+  filter: blur(1px);
+}
+.icing-swirl {
+  width: 200px; height: 100px; border-radius: 50%;
+  border-top: 13px solid rgba(255, 255, 255, .42);
+  transform: rotate(7deg);
+}
+.icing-swirl--left { left: 4%; bottom: 14%; }
+.icing-swirl--right { right: 8%; top: 43%; transform: rotate(-16deg) scale(.78); }
+
+.leaf {
+  width: 42px; height: 17px; border-radius: 100% 3% 100% 3%;
+  background: linear-gradient(130deg, #7b9b69, #456b4d);
+  box-shadow: 0 5px 10px rgba(44, 75, 38, .12);
+}
+.leaf--one { right: 11%; top: 38%; transform: rotate(34deg); }
+.leaf--two { left: 12%; bottom: 20%; transform: rotate(-18deg); }
+
+.pistachio {
+  width: 22px; height: 14px;
+  border-radius: 47% 53% 42% 58%;
+  background: linear-gradient(145deg, #d5c78c, #9eae72);
+  box-shadow: 16px 18px 0 -4px #8b9d64, 36px -7px 0 -7px #d8d49d;
+}
+.pistachio--one { left: 23%; top: 43%; transform: rotate(35deg); }
+.pistachio--two { right: 28%; bottom: 25%; transform: rotate(-25deg); }
+
+@media (max-width: 720px) {
+  .cake-layer { min-height: 300px; padding: 105px 24px 65px; }
+  .layer-vanilla { min-height: 200px; }
+  .layer-sponge--first { min-height: 425px; }
+  .layer-frosting { min-height: 255px; }
+  .layer-matcha { min-height: 310px; }
+  .layer-sponge--last { min-height: 280px; }
+  .cake-boundary { height: 90px; }
+  .berry--one { right: 11%; transform: scale(.65); }
+  .berry--two { display: none; }
+}
+
+@media (min-width: 651px) and (max-width: 720px) {
+  .layer-vanilla {
+    padding: 65px 24px 105px;
+  }
+}
+
+// Talas sada pripada materijalu narednog sloja.
+// SVG se koristi samo kao maska oblika, ne kao jednobojna traka.
+.cake-layer { --wave-height: clamp(74px, 9.5vw, 125px); }
+.layer-vanilla { z-index: 1; }
+.layer-sponge--first { z-index: 2; }
+.layer-frosting { z-index: 3; }
+.layer-matcha { z-index: 4; }
+.layer-sponge--last { z-index: 5; }
+
+.cake-layer:not(.layer-vanilla)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-1 * var(--wave-height) + 1px);
+  height: calc(var(--wave-height) + 26px);
+  background: inherit; // Ukljucuje teksturu (gradient-e), ne samo boju.
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  filter: drop-shadow(0 -4px 6px rgba(77, 50, 21, .12));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.layer-sponge--first::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2067%20C107%2019%20156%20107%20288%2054%20C377%2018%20425%2017%20524%2058%20C613%20104%20682%2012%20773%2051%20C864%2088%20938%2012%201035%2050%20C1144%2099%201224%2020%201342%2059%20C1386%2074%201419%2059%201440%2044%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2067%20C107%2019%20156%20107%20288%2054%20C377%2018%20425%2017%20524%2058%20C613%20104%20682%2012%20773%2051%20C864%2088%20938%2012%201035%2050%20C1144%2099%201224%2020%201342%2059%20C1386%2074%201419%2059%201440%2044%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+}
+.layer-frosting::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2061%20C95%2031%20154%20102%20276%2053%20C399%205%20454%2096%20564%2050%20C674%204%20714%20102%20824%2058%20C922%2020%20977%2082%201072%2051%20C1201%208%201289%20100%201440%2054%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2061%20C95%2031%20154%20102%20276%2053%20C399%205%20454%2096%20564%2050%20C674%204%20714%20102%20824%2058%20C922%2020%20977%2082%201072%2051%20C1201%208%201289%20100%201440%2054%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+}
+.layer-matcha::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2058%20C118%2018%20184%2091%20304%2052%20C417%2012%20492%2099%20599%2060%20C701%2022%20752%2089%20860%2049%20C971%2014%201042%20100%201158%2055%20C1261%2022%201350%2098%201440%2053%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2058%20C118%2018%20184%2091%20304%2052%20C417%2012%20492%2099%20599%2060%20C701%2022%20752%2089%20860%2049%20C971%2014%201042%20100%201158%2055%20C1261%2022%201350%2098%201440%2053%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+}
+.layer-sponge--last::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2058%20C100%2094%20186%2020%20280%2058%20C390%20107%20478%2022%20590%2062%20C693%2099%20769%2016%20881%2054%20C991%2099%201097%2011%201213%2051%20C1314%2084%201372%2022%201440%2060%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201440%20130%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fade%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%221%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22white%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22url%28%23fade%29%22%20d%3D%22M0%2058%20C100%2094%20186%2020%20280%2058%20C390%20107%20478%2022%20590%2062%20C693%2099%20769%2016%20881%2054%20C991%2099%201097%2011%201213%2051%20C1314%2084%201372%2022%201440%2060%20L1440%20130%20L0%20130%20Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.cake-layer > :not(.decor) { position: relative; z-index: 3; }
+
+
+.search-container {
+  position: relative;
+  z-index: 2;
+
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 16px 0 18px;
+  text-align: center;
+
+  h1 {
+    color: #345C49;
+    font-size: clamp(28px, 3vw, 46px);
+    margin: 0 0 28px;
+  }
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+  min-height: 72px;
+  padding: 8px 8px 8px 25px;
+
+  box-sizing: border-box;
+  border-radius: 50px;
+
+  background: #FFFCF5;
+  border: 1px solid #E8DCCB;
+
+  box-shadow:
+    0 10px 30px rgba(90, 65, 40, 0.13),
+    0 2px 8px rgba(90, 65, 40, 0.07);
+
+  transition: box-shadow 0.25s ease;
+
+  &:focus-within {
+    box-shadow:
+      0 10px 35px rgba(52, 92, 73, 0.20),
+      0 0 0 3px rgba(52, 92, 73, 0.10);
+  }
+
+  .search-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #345C49;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    font-size: 17px;
+    color: #253029;
+
+    &::placeholder {
+      color: #978D80;
+    }
+  }
+
+  button {
+    border: none;
+    border-radius: 40px;
+
+    padding: 16px 30px;
+    background: #345C49;
+    color: #FFF5DF;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+
+    &:hover {
+      background: #233B2F;
+      transform: scale(1.03);
+    }
+  }
+}
+
+.recipe-grid {
+  // Bez velikog obojenog pravougaonika. Boja i transparentnost su na karticama.
+  width: min(100%, 1200px);
+  margin: -34px auto 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.5vw, 22px);
+  align-items: stretch;
+}
+
+.recipe-grid > p {
+  grid-column: 1 / -1;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: rgba(255, 249, 238, 0.85);
+  color: #345C49;
+}
+
+@media (max-width: 980px) {
+  .recipe-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    width: 92%;
+  }
+
+  .search-box {
+    min-height: 60px;
+    gap: 8px;
+    padding-left: 15px;
+
+    button {
+      padding: 13px 16px;
+      font-size: 14px;
+    }
+
+    input {
+      font-size: 14px;
+    }
+  }
+}
+
+
+@media (max-width: 650px) {
+  .layer-vanilla {
+    min-height: 0;
+    padding: 62px 20px 65px;
+  }
+
+  .search-container {
+    padding: 8px 0 16px;
+
+    h1 { margin-bottom: 22px; }
+  }
+
+  .layer-sponge--first {
+    padding: 92px 18px 65px;
+  }
+
+  .recipe-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: -25px;
+  }
+}
