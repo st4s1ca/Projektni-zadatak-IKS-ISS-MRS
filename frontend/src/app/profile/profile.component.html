@@ -1,0 +1,22 @@
+<div class="profile-container">
+  <h2>Korisnički profil</h2>
+
+  @if (profile.profileImage) {
+    <img [src]="profile.profileImage" alt="Profilna slika">
+  } @else {
+    <p>Profilna slika nije postavljena.</p>
+  }
+
+  <h3>{{ profile.username }}</h3>
+
+  <p>Region: {{ profile.region }}</p>
+
+  @if (profile.biography) {
+    <p>Biografija: {{ profile.biography }}</p>
+  } @else {
+    <p>Korisnik nije uneo biografiju.</p>
+  }
+
+  <p>Broj objavljenih recepata: {{ profile.recipeCount }}</p>
+
+</div>
