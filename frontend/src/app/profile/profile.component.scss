@@ -1,3 +1,4 @@
+
 :host {
   display: block;
 }
@@ -6,19 +7,22 @@
   --forest: #345c49;
   --ink: #3d3027;
   --muted: #725e4b;
-  --vanilla: #fff4df;
+
   position: relative;
-  isolation: isolate;
+  min-height: 100vh;
+  padding: 105px 24px 150px;
   overflow: hidden;
-  min-height: 650px;
-  padding: 102px 24px 205px;
   color: var(--ink);
-  background:
-    radial-gradient(ellipse at 8% 20%, rgba(255, 255, 255, .76), transparent 37%),
-    radial-gradient(ellipse at 90% 82%, rgba(203, 218, 169, .35), transparent 37%),
-    repeating-radial-gradient(circle at 11% 26%, rgba(176, 140, 93, .055) 0 1px, transparent 2px 23px),
-    linear-gradient(125deg, #fff8e9 0%, #fff0d4 62%, #f5e0bc 100%);
+
+  background: linear-gradient(
+    135deg,
+    #fff8e9 0%,
+    #fff0d4 65%,
+    #f5e0bc 100%
+  );
 }
+
+/* Glavni kontejner */
 
 .profile-page__content {
   position: relative;
@@ -27,38 +31,45 @@
   margin: 0 auto;
 }
 
+/* Povratak na početnu stranicu */
+
 .profile-page__back {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 33px;
+  gap: 8px;
+  margin-bottom: 32px;
   color: var(--forest);
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
   text-decoration: none;
-  transition: opacity 160ms ease;
 
-  svg { width: 18px; height: 18px; }
-  &:hover { opacity: .68; }
-  &:focus-visible { outline: 2px solid var(--forest); outline-offset: 5px; }
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
+
+/* Naslov stranice */
 
 .profile-page__intro {
   margin-bottom: 32px;
 
   h1 {
-    margin: 10px 0 10px;
+    margin: 10px 0;
     color: var(--forest);
-    font-size: clamp(37px, 5vw, 58px);
+    font-size: clamp(36px, 5vw, 56px);
     font-weight: 750;
-    letter-spacing: -.045em;
-    line-height: 1.08;
   }
 
   p {
-    margin: 0;
     color: var(--muted);
-    font-size: clamp(15px, 1.5vw, 18px);
+    font-size: 17px;
     line-height: 1.6;
   }
 }
@@ -67,38 +78,57 @@
 .profile-card__small-label {
   color: #93613d;
   font-size: 12px;
-  font-weight: 750;
-  letter-spacing: .15em;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
+
+/* Dekorativni elementi */
 
 .profile-page__ornament {
   position: absolute;
-  width: 210px;
-  height: 210px;
-  border: 1px solid rgba(149, 110, 66, .13);
-  border-radius: 46% 54% 61% 39%;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(149, 110, 66, 0.15);
+  border-radius: 50%;
   pointer-events: none;
 }
-.profile-page__ornament--left { top: 245px; left: -155px; transform: rotate(26deg); }
-.profile-page__ornament--right { right: -135px; bottom: 125px; transform: rotate(-25deg); }
+
+.profile-page__ornament--left {
+  top: 250px;
+  left: -150px;
+}
+
+.profile-page__ornament--right {
+  right: -140px;
+  bottom: 120px;
+}
+
+/* Kartica profila */
 
 .profile-card {
-  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(171, 124, 75, .27);
+  border: 1px solid rgba(171, 124, 75, 0.25);
   border-radius: 28px;
-  background: rgba(255, 252, 244, .92);
-  box-shadow: 0 25px 62px rgba(98, 66, 32, .11), 0 6px 18px rgba(98, 66, 32, .05);
+  background: #fffcf4;
+  box-shadow: 0 20px 55px rgba(98, 66, 32, 0.12);
 }
 
 .profile-card__accent {
   height: 9px;
-  background: linear-gradient(90deg, #345c49 0 34%, #aebe8e 34% 61%, #d8a368 61% 82%, #e9ad96 82%);
+  background: linear-gradient(
+    90deg,
+    #345c49 0%,
+    #aebe8e 40%,
+    #d8a368 75%,
+    #e9ad96 100%
+  );
 }
 
 .profile-card__content {
-  padding: clamp(26px, 4.3vw, 55px);
+  padding: clamp(24px, 4vw, 50px);
 }
+
+/* Osnovni podaci */
 
 .profile-card__overview {
   display: flex;
@@ -110,30 +140,34 @@
 .profile-card__identity {
   display: flex;
   align-items: center;
-  gap: clamp(20px, 3vw, 32px);
+  gap: 28px;
   min-width: 0;
 }
 
 .profile-card__avatar {
   display: grid;
-  flex: 0 0 auto;
   place-items: center;
-  width: clamp(114px, 16vw, 158px);
-  height: clamp(114px, 16vw, 158px);
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
   overflow: hidden;
   border: 6px solid #fff9ee;
   border-radius: 50%;
-  background: linear-gradient(135deg, #c5d1a6, #a5b98d);
-  box-shadow: 0 7px 22px rgba(59, 85, 57, .13), 0 0 0 1px rgba(69, 103, 74, .16);
+  background: #c5d1a6;
+  box-shadow: 0 5px 20px rgba(59, 85, 57, 0.15);
 
-  img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .profile-card__initial {
   color: var(--forest);
-  font-size: 62px;
+  font-size: 60px;
   font-weight: 750;
-  line-height: 1;
 }
 
 .profile-card__identity-text {
@@ -141,142 +175,318 @@
 
   h2 {
     margin: 10px 0 14px;
-    overflow-wrap: anywhere;
     color: var(--forest);
-    font-size: clamp(26px, 3.3vw, 39px);
-    font-weight: 750;
-    letter-spacing: -.035em;
-    line-height: 1.15;
+    font-size: clamp(26px, 3vw, 38px);
+    overflow-wrap: anywhere;
   }
 }
+
+/* Region */
 
 .profile-card__region {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  max-width: 100%;
+  gap: 8px;
   padding: 9px 14px;
-  border: 1px solid rgba(52, 92, 73, .12);
   border-radius: 30px;
   background: #eaf0e0;
   color: var(--forest);
   font-size: 14px;
-  font-weight: 650;
+  font-weight: 600;
 
-  svg { width: 17px; height: 17px; flex: none; }
-  span { overflow-wrap: anywhere; }
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
 }
+
+/* Broj recepata */
 
 .profile-card__recipes {
   display: flex;
-  flex: 0 0 210px;
+  flex: 0 0 200px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 25px 20px;
-  border: 1px solid rgba(188, 138, 89, .17);
   border-radius: 20px;
-  background: linear-gradient(140deg, #fff1d8, #f7e4c7);
+  background: linear-gradient(135deg, #fff1d8, #f7e4c7);
   text-align: center;
 }
 
 .profile-card__recipes-icon {
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, .65);
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: #fff9ee;
   color: #8e5b36;
 
-  svg { width: 26px; height: 26px; }
+  svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .profile-card__recipes-number {
-  margin: 8px 0 0;
+  margin-top: 8px;
   color: var(--forest);
   font-size: 46px;
   font-weight: 800;
-  letter-spacing: -.05em;
-  line-height: 1.12;
 }
 
 .profile-card__recipes-caption {
-  margin-top: 4px;
   color: #72543b;
   font-size: 13px;
-  font-weight: 650;
+  font-weight: 600;
 }
+
+/* Biografija */
 
 .profile-card__divider {
   height: 1px;
-  margin: 40px 0 31px;
-  background: linear-gradient(90deg, rgba(189, 148, 101, .4), rgba(189, 148, 101, .09));
+  margin: 35px 0;
+  background: #e5d5bd;
 }
 
 .profile-card__about-heading {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
+  gap: 12px;
+  margin-bottom: 15px;
 
-  h3 { margin: 0; color: var(--forest); font-size: 21px; letter-spacing: -.02em; }
+  h3 {
+    margin: 0;
+    color: var(--forest);
+    font-size: 22px;
+  }
 }
 
 .profile-card__about-icon {
   display: grid;
   place-items: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 11px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: #edf1e4;
   color: var(--forest);
 
-  svg { width: 20px; height: 20px; }
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .profile-card__about p {
-  max-width: 690px;
   margin: 0;
   color: #594c3f;
   font-size: 16px;
   line-height: 1.75;
-  overflow-wrap: anywhere;
 }
 
-.profile-card__about .profile-card__empty { color: #897966; font-style: italic; }
+.profile-card__empty {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* Dugme za izmenu */
+
+.profile-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.profile-edit-button,
+.profile-edit__save {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--forest);
+  color: #fff9ec;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+}
+
+.profile-notice {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #eaf0e0;
+  color: var(--forest);
+  font-size: 14px;
+}
+
+/* Forma za izmenu profila */
+
+.profile-edit {
+  margin-top: 35px;
+  padding: 28px;
+  border: 1px solid #dfd0ba;
+  border-radius: 20px;
+  background: #fff8eb;
+}
+
+.profile-edit__heading {
+  margin-bottom: 25px;
+
+  h3 {
+    margin: 0 0 8px;
+    color: var(--forest);
+    font-size: 24px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+}
+
+.profile-edit__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 22px;
+
+  label {
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  input:not([type='file']),
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d0c3ac;
+    border-radius: 10px;
+    background: #fffefa;
+    color: var(--ink);
+    font: inherit;
+
+    &:focus {
+      outline: 2px solid var(--forest);
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      background: #f0ebdf;
+      color: #776d5c;
+      cursor: not-allowed;
+    }
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .profile-edit__error {
+    color: #a32e36;
+  }
+}
+
+.profile-edit__optional {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.profile-edit__file {
+  max-width: 100%;
+  font-size: 13px;
+}
+
+.profile-edit__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-edit__cancel {
+  padding: 12px 22px;
+  border: 1px solid #bba88d;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-edit__save:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Responsive */
 
 @media (max-width: 760px) {
-  .profile-page { padding: 95px 20px 175px; }
-  .profile-card__overview { align-items: stretch; flex-direction: column; }
+  .profile-page {
+    padding: 95px 20px 140px;
+  }
+
+  .profile-card__overview {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .profile-card__recipes {
     flex: 0 1 auto;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 12px;
-    padding: 14px 20px;
   }
-  .profile-card__recipes-number { margin: 0; font-size: 32px; }
-  .profile-card__recipes-caption { margin: 0; }
+
+  .profile-card__avatar {
+    width: 110px;
+    height: 110px;
+  }
 }
 
 @media (max-width: 480px) {
-  .profile-page { padding: 90px 14px 155px; }
-  .profile-page__back { margin-bottom: 26px; }
-  .profile-page__intro { margin-bottom: 25px; }
-  .profile-card { border-radius: 21px; }
-  .profile-card__content { padding: 25px 20px 28px; }
-  .profile-card__identity { align-items: flex-start; gap: 18px; }
-  .profile-card__avatar { width: 88px; height: 88px; border-width: 4px; }
-  .profile-card__initial { font-size: 43px; }
-  .profile-card__small-label { font-size: 10px; }
-  .profile-card__identity-text h2 { font-size: 24px; margin: 7px 0 10px; }
-  .profile-card__region { padding: 7px 9px; font-size: 12px; }
-  .profile-card__recipes { gap: 10px; }
-  .profile-card__divider { margin: 30px 0 25px; }
-}
+  .profile-page {
+    padding: 90px 14px 120px;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .profile-page__back { transition: none; }
+  .profile-card {
+    border-radius: 20px;
+  }
+
+  .profile-card__content {
+    padding: 24px 18px;
+  }
+
+  .profile-card__identity {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .profile-card__avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-edit {
+    padding: 18px;
+  }
+
+  .profile-edit__buttons button {
+    flex: 1 1 100%;
+  }
 }
