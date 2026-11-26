@@ -1,0 +1,96 @@
+<section class="profile-page" aria-labelledby="profile-page-title">
+  <div class="profile-page__ornament profile-page__ornament--left" aria-hidden="true"></div>
+  <div class="profile-page__ornament profile-page__ornament--right" aria-hidden="true"></div>
+
+  <div class="profile-page__content">
+    <a class="profile-page__back" routerLink="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m14 6-6 6 6 6" />
+        <path d="M9 12h11" />
+      </svg>
+      Back to home
+    </a>
+
+    <div class="profile-page__intro">
+      <span class="profile-page__eyebrow">CUISINE CRUISE COMMUNITY</span>
+      <h1 id="profile-page-title">
+        {{ profile === ownProfile ? 'My profile' : 'Community profile' }}
+      </h1>
+      <p>
+        {{ profile === ownProfile
+          ? 'Your little corner of the culinary world.'
+          : 'Meet a fellow food lover from our community.' }}
+      </p>
+    </div>
+
+    <article class="profile-card" aria-label="Korisnički profil">
+      <div class="profile-card__accent" aria-hidden="true"></div>
+      <div class="profile-card__content">
+        <div class="profile-card__overview">
+          <div class="profile-card__identity">
+            <div class="profile-card__avatar">
+              @if (profile.profileImage) {
+                <img [src]="profile.profileImage"
+                     [alt]="'Profilna slika korisnika ' + profile.username" />
+              } @else {
+                <span class="profile-card__initial" aria-label="Korisnik nema profilnu sliku">
+                  {{ profile.username.charAt(0).toUpperCase() }}
+                </span>
+              }
+            </div>
+
+            <div class="profile-card__identity-text">
+              <span class="profile-card__small-label">
+                {{ profile === ownProfile ? 'YOUR SPACE' : 'COMMUNITY MEMBER' }}
+              </span>
+              <h2>{{ profile.username }}</h2>
+              <div class="profile-card__region">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+                <span>{{ profile.region }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card__recipes" aria-label="Broj objavljenih recepata">
+            <div class="profile-card__recipes-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 7h17a2 2 0 0 1 2 2v18H10a3 3 0 0 1-3-3V7Z" />
+                <path d="M7 8a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h19" />
+                <path d="M12 13h9M12 18h9" />
+              </svg>
+            </div>
+            <span class="profile-card__recipes-number">{{ profile.recipeCount }}</span>
+            <span class="profile-card__recipes-caption">Published recipes</span>
+          </div>
+        </div>
+
+        <div class="profile-card__divider" aria-hidden="true"></div>
+
+        <section class="profile-card__about" aria-labelledby="profile-about-title">
+          <div class="profile-card__about-heading">
+            <span class="profile-card__about-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 4c-10 0-15 4-15 11a5 5 0 0 0 5 5c7 0 11-5 10-16Z" />
+                <path d="M5 20c3-5 6-8 12-11" />
+              </svg>
+            </span>
+            <h3 id="profile-about-title">About the cook</h3>
+          </div>
+
+          @if (profile.biography) {
+            <p>{{ profile.biography }}</p>
+          } @else {
+            <p class="profile-card__empty">No biography added yet.</p>
+          }
+        </section>
+      </div>
+    </article>
+  </div>
+</section>
