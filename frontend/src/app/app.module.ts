@@ -7,14 +7,8 @@ import { Profile } from './profile/profile.component';
 
 @NgModule({
   declarations: [App, Profile],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
 export class AppModule {}
