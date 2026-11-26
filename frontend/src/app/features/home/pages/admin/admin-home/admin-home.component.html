@@ -1,0 +1,28 @@
+<main class="admin-page">
+  <div class="admin-container">
+
+    <section class="admin-intro">
+      <p class="admin-eyebrow">Cuisine Cruise · Administration</p>
+      <h1>Admin dashboard</h1>
+    </section>
+
+    <section class="admin-grid">
+
+      <article class="admin-card" *ngFor="let section of adminSections">
+        <div class="admin-card__icon" aria-hidden="true">
+          {{ section.icon }}
+        </div>
+
+        <h2>{{ section.title }}</h2>
+        <p>{{ section.description }}</p>
+
+        <a class="admin-card__link"
+           [routerLink]="section.route">
+          Otvori sekciju <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+    </section>
+
+  </div>
+</main>
